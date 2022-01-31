@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  print-tree:
+  install-deps:
     docker:
       # https://circleci.com/developer/images/image/cimg/base
       - image: cimg/base:stable
@@ -9,10 +9,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Install deps"
+          command: "sudo apt-get update && sudo apt-get install -y tree g++ make cmake git valgrind"
+      - run:
           name: "Print tree"
-          command: "sudo apt-get update && sudo apt-get install -y tree && tree -a"
+          command: "tree -a"
 
 workflows:
-  print-tree-workflow:
+  test-dev-workflow:
     jobs:
-      - print-tree
+      - install-deps
