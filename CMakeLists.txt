@@ -64,13 +64,24 @@ function(enable_all_warnings TARGET)
 endfunction()
 
 if(ENABLE_EXAMPLES)
-    # Hello World example
-    add_executable(1-hello
-            examples/1.hello.cpp)
+    #################################################
+    #              Hello World example              #
+    #################################################
+    add_executable(1-hello examples/1.hello.cpp)
 
     enable_all_warnings(1-hello)
 
     target_link_libraries(1-hello ${LIBRARY_NAME})
+else()
+    #############################################################
+    #                  Add your .cpp files here                 #
+    #############################################################
+    # add_executable(<EXECUTABLE NAME> <PATH TO YOUR CPP FILE>) #
+
+    #############################################################
+    #            Link library to your executable here           #
+    #############################################################
+    # target_link_libraries(<EXECUTABLE NAME> ${LIBRARY_NAME})  #
 endif(ENABLE_EXAMPLES)
 
 install(
