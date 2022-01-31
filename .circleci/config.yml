@@ -5,6 +5,7 @@ jobs:
     docker:
       # https://circleci.com/developer/images/image/cimg/base
       - image: cimg/base:stable
+    resource_class: small
     steps:
       - checkout
       - run:
