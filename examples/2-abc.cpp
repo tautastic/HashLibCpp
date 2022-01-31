@@ -4,7 +4,7 @@
 int main() {
     std::string msg = "abc";
     auto sha256_hash = SHA2::SHA256::hash(msg);
-    std::cout << "Input:  " << msg << "\nSHA256: " << sha256_hash;
+    std::cout << "\nInput:  " << msg << "\nSHA256: " << sha256_hash << "\n";
 
     return 0;
 }
