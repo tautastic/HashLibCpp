@@ -1,6 +1,6 @@
 #pragma once
 
-#include "HashLib/sha2.hpp"
+#include <HashLib/sha2.hpp>
 
 namespace SHA2::SHA256 {
     using HashType  = std::array<uint8_t,32>;  // 32 * 8bits  = 256bits  => 64bytes  | Digest
