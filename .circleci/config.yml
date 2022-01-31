@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  install-deps:
+  build-and-test:
     docker:
       # https://circleci.com/developer/images/image/cimg/base
       - image: cimg/base:stable
@@ -14,8 +14,11 @@ jobs:
       - run:
           name: "Print tree"
           command: "tree -a"
+      - run:
+          name: "Copy files to new dir"
+          command: "cp -a /. /code/HashLibCpp/"
 
 workflows:
   test-dev-workflow:
     jobs:
-      - install-deps
+      - build-and-test
