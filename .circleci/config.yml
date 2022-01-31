@@ -13,13 +13,13 @@ jobs:
           command: "sudo apt-get update && sudo apt-get install -y tree g++ make cmake git valgrind"
       - run:
           name: "Build"
-          command: "cmake -B _build -DCMAKE_BUILD_TYPE=Debug . && cmake --build _build"
-      - run:
-          name: "Print tree"
-          command: "tree _build/"
+          command: "cmake -B _build -DCMAKE_BUILD_TYPE=Debug -DENABLE_EXAMPLES=ON . && cmake --build _build"
       - run:
           name: "Run Hello World example"
           command: "_build/1-hello"
+      - run:
+          name: "Run abc example"
+          command: "_build/2-abc"
 
 workflows:
   test-dev-workflow:

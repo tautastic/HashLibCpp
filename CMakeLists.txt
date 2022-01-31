@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16.3)
 set(CMAKE_CXX_STANDARD 20)
 
 OPTION(ENABLE_TESTING "Build the library with tests" OFF)
-OPTION(ENABLE_EXAMPLES "Build examples" ON)
+OPTION(ENABLE_EXAMPLES "Build examples" OFF)
 
 set(LIBRARY_NAME HashLibCpp)
 
@@ -64,14 +64,14 @@ function(enable_all_warnings TARGET)
 endfunction()
 
 if(ENABLE_EXAMPLES)
-    #################################################
-    #              Hello World example              #
-    #################################################
     add_executable(1-hello examples/1.hello.cpp)
-
     enable_all_warnings(1-hello)
-
     target_link_libraries(1-hello ${LIBRARY_NAME})
+
+
+    add_executable(2-abc examples/2-abc.cpp)
+    enable_all_warnings(2-abc)
+    target_link_libraries(2-abc ${LIBRARY_NAME})
 else()
     #############################################################
     #                  Add your .cpp files here                 #
