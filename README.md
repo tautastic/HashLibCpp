@@ -1,5 +1,13 @@
 # HashLibCpp
-[![CMake](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml/badge.svg)](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml)
+
+
+| Branch |                                                                                 CMake                                                                                 |                                                                  CircleCi                                                                   |
+|:------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|
+| master |      [![CMake](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml/badge.svg)](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml)       | [![CircleCI](https://circleci.com/gh/ADD1609/HashLibCpp/tree/master.svg?style=svg)](https://circleci.com/gh/ADD1609/HashLibCpp/tree/master) |
+|  dev   | [![CMake](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml/badge.svg?branch=dev)](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml) |  [![CircleCI](https://circleci.com/gh/ADD1609/HashLibCpp/tree/dev.svg?style=svg)](https://circleci.com/gh/ADD1609/HashLibCpp/tree/master)   |
+
+
+
 
 ## Features
 ### SHA256:
@@ -10,11 +18,11 @@
 #include <HashLib/sha256.hpp>
 
 int main() {
-    std::string msg = "Hello World";
-    auto sha256_hash = SHA2::SHA256::hash(msg);
-    std::cout << "\nInput:  " << msg << "\nSHA256: " << sha256_hash;
+std::string msg = "Hello World";
+auto sha256_hash = SHA2::SHA256::hash(msg);
+std::cout << "\nInput:  " << msg << "\nSHA256: " << sha256_hash;
 
-    return 0;
+return 0;
 }
 ```
 ### Output:

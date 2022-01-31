@@ -22,6 +22,6 @@ jobs:
           command: "valgrind --leak-check=full _build/2-abc"
 
 workflows:
-  test-dev-workflow:
+  build-and-test-workflow:
     jobs:
       - build-and-test
