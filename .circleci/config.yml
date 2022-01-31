@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Print all"
+          name: "Print tree"
           command: "sudo apt-get update && sudo apt-get install -y tree && tree -a"
 
 workflows:
