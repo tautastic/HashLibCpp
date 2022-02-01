@@ -10,10 +10,20 @@ project(${LIBRARY_NAME})
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
-add_library(${LIBRARY_NAME} SHARED
-        src/sha2.cpp
-        src/sha224.cpp
-        src/sha256.cpp)
+# Make sure that SHA512 can be compiled
+if(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU") OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
+    add_library(${LIBRARY_NAME} SHARED
+            src/sha2.cpp
+            src/sha224.cpp
+            src/sha256.cpp
+            src/sha512.cpp)
+else()
+    message(WARNING "Couldn't compile SHA512.cpp, GNU or Clang needed, you compiled with ${CMAKE_CXX_COMPILER_ID}")
+    add_library(${LIBRARY_NAME} SHARED
+            src/sha2.cpp
+            src/sha224.cpp
+            src/sha256.cpp)
+endif() # STREQUAL "GNU OR Clang"
 
 # Set maximum warnings level depending on compiler.
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
@@ -46,7 +56,7 @@ else()
             COMPILE_FLAGS "-Wunreachable-code"
             COMPILE_FLAGS "-pedantic"
             COMPILE_FLAGS "-pedantic-errors")
-endif()
+endif() # STREQUAL "Clang"
 
 set_target_properties(${LIBRARY_NAME} PROPERTIES VERSION 0.0.1)
 
@@ -73,6 +83,12 @@ if(ENABLE_EXAMPLES)
     add_executable(sha256_abc examples/sha256_abc.cpp)
     enable_all_warnings(sha256_abc)
     target_link_libraries(sha256_abc ${LIBRARY_NAME})
+
+    if(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU") OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
+        add_executable(sha512_abc examples/sha512_abc.cpp)
+        enable_all_warnings(sha512_abc)
+        target_link_libraries(sha512_abc ${LIBRARY_NAME})
+    endif() # STREQUAL "GNU OR Clang"
 else()
     #############################################################
     #                  Add your .cpp files here                 #
