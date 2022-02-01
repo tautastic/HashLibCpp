@@ -51,7 +51,7 @@ namespace SHA2::SHA256 {
         // Clear block after 1bit
         memset(&data[data_cursor], 0, MAX(sizeof(BlockType) - data_cursor, 0));
 
-        if(data_cursor >= 56) {
+        if(data_cursor >= sizeof(DataType) - 8) {
             // Need new block for message length
             // Hash old block
             compute(data,W,WV,H);
@@ -60,8 +60,8 @@ namespace SHA2::SHA256 {
             data_cursor = 0;
             memset(&data, 0, sizeof(BlockType));
         }
-        // Set last 32bits as message length
-        u32_to_u8((msgSize << 3), &data[sizeof(BlockType) - 4]);
+        // Set last 64bits as message length
+        u64_to_u8((msgSize << 3), &data[sizeof(DataType) - 8]);
         compute(data,W,WV,H);
     }
 
@@ -101,10 +101,14 @@ namespace SHA2::SHA256 {
         HashType out = {};
         size_t data_cursor = 0;
         StateType H = {
-            0x6a09e667U,0xbb67ae85U,
-            0x3c6ef372U,0xa54ff53aU,
-            0x510e527fU,0x9b05688cU,
-            0x1f83d9abU,0x5be0cd19U
+            0x6a09e667UL,
+            0xbb67ae85UL,
+            0x3c6ef372UL,
+            0xa54ff53aUL,
+            0x510e527fUL,
+            0x9b05688cUL,
+            0x1f83d9abUL,
+            0x5be0cd19UL
         };
 
         // Start hashing process
