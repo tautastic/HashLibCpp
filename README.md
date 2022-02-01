@@ -13,16 +13,15 @@
 ### SHA256:
 ```c++
 // main.cpp
-
 #include <iostream>
 #include <HashLib/sha256.hpp>
 
 int main() {
-std::string msg = "Hello World";
-auto sha256_hash = SHA2::SHA256::hash(msg);
-std::cout << "\nInput:  " << msg << "\nSHA256: " << sha256_hash;
+    std::string msg = "Hello World";
+    auto sha256_hash = SHA2::SHA256::hash(msg);
+    std::cout << "\nInput:  " << msg << "\nSHA256: " << sha256_hash;
 
-return 0;
+    return 0;
 }
 ```
 ### Output:
