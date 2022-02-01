@@ -20,6 +20,9 @@ jobs:
       - run:
           name: "Valgrind run sha256_abc example"
           command: "valgrind --leak-check=full _build/sha256_abc"
+      - run:
+          name: "Valgrind run sha512_abc example"
+          command: "valgrind --leak-check=full _build/sha512_abc"
 
 workflows:
   build-and-test-workflow:
