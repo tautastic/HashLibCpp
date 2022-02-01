@@ -13,16 +13,10 @@ jobs:
           command: "sudo apt-get update && sudo apt-get install -y tree g++ make cmake valgrind"
       - run:
           name: "Build"
-          command: "cmake -B _build -DCMAKE_BUILD_TYPE=Debug -DENABLE_EXAMPLES=ON -DENABLE_TESTING=ON . && cmake --build _build"
+          command: "cmake -B _build -DCMAKE_BUILD_TYPE=Debug -DENABLE_TESTING=ON . && cmake --build _build"
       - run:
-          name: "Valgrind run sha224_abc example"
-          command: "valgrind --leak-check=full _build/sha224_abc"
-      - run:
-          name: "Valgrind run sha256_abc example"
-          command: "valgrind --leak-check=full _build/sha256_abc"
-      - run:
-          name: "Valgrind run sha512_abc example"
-          command: "valgrind --leak-check=full _build/sha512_abc"
+          name: "CTest run all"
+          command: "cd _build/ && ctest -j8"
 
 workflows:
   build-and-test-workflow:
