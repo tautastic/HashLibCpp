@@ -3,11 +3,11 @@
 #include <HashLib/sha2.hpp>
 
 namespace SHA2::SHA224 {
-    using HashType  = std::array<uint8_t,32>;  // 32 * 8bits  = 256bits  => 64bytes  | Digest
-    using StateType = std::array<uint32_t,8>;  // 8  * 32bits = 256bits  => 64bytes  | Working variables
-    using BlockType = std::array<uint32_t,16>; // 16 * 32bits = 512bits  => 128bytes | Big endian block
-    using DataType  = std::array<uint8_t,64>;  // 32 * 8bits  = 512bits  => 128bytes | Small endian block
-    using MSType    = std::array<uint32_t,64>; // 64 * 32bits = 2048bits => 512bytes | Message schedule
+    using HashType  = std::array<uint8_t,32>;  // 32 * 8bits  = 256bits  => 32bytes  | Digest
+    using StateType = std::array<uint32_t,8>;  // 8  * 32bits = 256bits  => 32bytes  | Working variables
+    using BlockType = std::array<uint32_t,16>; // 16 * 32bits = 512bits  => 64bytes  | Big endian block
+    using DataType  = std::array<uint8_t,64>;  // 32 * 8bits  = 512bits  => 64bytes  | Small endian block
+    using MSType    = std::array<uint32_t,64>; // 64 * 32bits = 2048bits => 256bytes | Message schedule
 
     // BIG sigma functions of SHA224
     uint32_t BSIG_0(const uint32_t& x);
