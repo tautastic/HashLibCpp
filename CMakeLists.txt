@@ -12,6 +12,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 
 add_library(${LIBRARY_NAME} SHARED
         src/sha2.cpp
+        src/sha224.cpp
         src/sha256.cpp)
 
 # Set maximum warnings level depending on compiler.
@@ -64,14 +65,14 @@ function(enable_all_warnings TARGET)
 endfunction()
 
 if(ENABLE_EXAMPLES)
-    add_executable(1-hello examples/1.hello.cpp)
-    enable_all_warnings(1-hello)
-    target_link_libraries(1-hello ${LIBRARY_NAME})
+    add_executable(sha224_abc examples/sha224_abc.cpp)
+    enable_all_warnings(sha224_abc)
+    target_link_libraries(sha224_abc ${LIBRARY_NAME})
 
 
-    add_executable(2-abc examples/2-abc.cpp)
-    enable_all_warnings(2-abc)
-    target_link_libraries(2-abc ${LIBRARY_NAME})
+    add_executable(sha256_abc examples/sha256_abc.cpp)
+    enable_all_warnings(sha256_abc)
+    target_link_libraries(sha256_abc ${LIBRARY_NAME})
 else()
     #############################################################
     #                  Add your .cpp files here                 #

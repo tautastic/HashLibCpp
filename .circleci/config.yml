@@ -15,11 +15,11 @@ jobs:
           name: "Build"
           command: "cmake -B _build -DCMAKE_BUILD_TYPE=Debug -DENABLE_EXAMPLES=ON -DENABLE_TESTING=ON . && cmake --build _build"
       - run:
-          name: "Valgrind Hello World example"
-          command: "valgrind --leak-check=full _build/1-hello"
+          name: "Valgrind run sha224_abc example"
+          command: "valgrind --leak-check=full _build/sha224_abc"
       - run:
-          name: "Valgrind abc example"
-          command: "valgrind --leak-check=full _build/2-abc"
+          name: "Valgrind run sha256_abc example"
+          command: "valgrind --leak-check=full _build/sha256_abc"
 
 workflows:
   build-and-test-workflow:
