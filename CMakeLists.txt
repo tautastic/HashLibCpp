@@ -101,6 +101,24 @@ else()
     # target_link_libraries(<EXECUTABLE NAME> ${LIBRARY_NAME})  #
 endif(ENABLE_EXAMPLES)
 
+if(ENABLE_TESTING)
+    enable_testing()
+    add_executable(test_sha224 tests/test_sha224.cpp)
+    target_link_libraries(test_sha224 ${LIBRARY_NAME})
+    add_test(NAME sha224 COMMAND test_sha224)
+
+
+    add_executable(test_sha256 tests/test_sha256.cpp)
+    target_link_libraries(test_sha256 ${LIBRARY_NAME})
+    add_test(NAME sha256 COMMAND test_sha256)
+
+
+    add_executable(test_sha512 tests/test_sha512.cpp)
+    target_link_libraries(test_sha512 ${LIBRARY_NAME})
+    add_test(NAME sha512 COMMAND test_sha512)
+
+endif(ENABLE_TESTING)
+
 install(
         TARGETS
         ${LIBRARY_NAME}
