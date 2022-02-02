@@ -1,15 +1,22 @@
 # HashLibCpp
+This repository aims to provide an easy-to-use implementation of the Secure Hash Standard. (currently implemented are SHA224, SHA256 and SHA512)
 
+All functions are implemented as specified in [NIST-FIPS 180-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf).
 
-| Branch |                                                                                 CMake                                                                                 |                                                                  CircleCi                                                                   |                                                                                               Flawfinder                                                                                               |
-|:------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| master |      [![CMake](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml/badge.svg)](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml)       | [![CircleCI](https://circleci.com/gh/ADD1609/HashLibCpp/tree/master.svg?style=svg)](https://circleci.com/gh/ADD1609/HashLibCpp/tree/master) |      [![flawfinder](https://github.com/ADD1609/HashLibCpp/actions/workflows/flawfinder-analysis.yml/badge.svg)](https://github.com/ADD1609/HashLibCpp/actions/workflows/flawfinder-analysis.yml)       |
-|  dev   | [![CMake](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml/badge.svg?branch=dev)](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml) |    [![CircleCI](https://circleci.com/gh/ADD1609/HashLibCpp/tree/dev.svg?style=svg)](https://circleci.com/gh/ADD1609/HashLibCpp/tree/dev)    | [![flawfinder](https://github.com/ADD1609/HashLibCpp/actions/workflows/flawfinder-analysis.yml/badge.svg?branch=dev)](https://github.com/ADD1609/HashLibCpp/actions/workflows/flawfinder-analysis.yml) |
+Feel free to fork, contribute to, use or open issues in, this repository. Since I am neither a C++ nor a cryptography professional, suggestions and or help is appreciated.
 
+## Status
 
+|   Branch   |                                                                                           master                                                                                            |                                                                                                  dev                                                                                                   |
+|:----------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|   CMake    |                 [![CMake](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml/badge.svg)](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml)                  |                 [![CMake](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml/badge.svg?branch=dev)](https://github.com/ADD1609/HashLibCpp/actions/workflows/cmake.yml)                  |
+|  CircleCi  |                         [![CircleCI](https://circleci.com/gh/ADD1609/HashLibCpp/tree/master.svg?style=svg)](https://circleci.com/gh/ADD1609/HashLibCpp/tree/master)                         |                                 [![CircleCI](https://circleci.com/gh/ADD1609/HashLibCpp/tree/dev.svg?style=svg)](https://circleci.com/gh/ADD1609/HashLibCpp/tree/dev)                                  |
+| Flawfinder | [![flawfinder](https://github.com/ADD1609/HashLibCpp/actions/workflows/flawfinder-analysis.yml/badge.svg)](https://github.com/ADD1609/HashLibCpp/actions/workflows/flawfinder-analysis.yml) | [![flawfinder](https://github.com/ADD1609/HashLibCpp/actions/workflows/flawfinder-analysis.yml/badge.svg?branch=dev)](https://github.com/ADD1609/HashLibCpp/actions/workflows/flawfinder-analysis.yml) |
 
+## Disclaimer
+**I am neither a C++ nor a cryptography professional, thus my implementation of the Secure Hash Standard should not be used in production code.**
 
-## Features
+## Example
 ### SHA256:
 ```c++
 // main.cpp
