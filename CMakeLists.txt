@@ -125,6 +125,11 @@ if(ENABLE_TESTING)
     add_test(NAME sha256 COMMAND test_sha256)
 
 
+    add_executable(test_sha384 tests/test_sha384.cpp)
+    target_link_libraries(test_sha384 ${LIBRARY_NAME})
+    add_test(NAME sha384 COMMAND test_sha384)
+
+
     add_executable(test_sha512 tests/test_sha512.cpp)
     target_link_libraries(test_sha512 ${LIBRARY_NAME})
     add_test(NAME sha512 COMMAND test_sha512)
