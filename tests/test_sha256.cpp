@@ -1,9 +1,6 @@
 #include <array>
 #include <HashLib/sha256.hpp>
 
-
-using namespace SHA2::SHA256;
-
 int main() {
     std::array<std::string,5> in = {
         "",
@@ -25,6 +22,6 @@ int main() {
 
     return (std::any_of(in.begin(), in.end(), [&i, &out](std::string msg){
         i++;
-        return hash(msg) != out[i];
+        return SHA2::SHA256::hash(msg) != out[i];
     }));
 }
