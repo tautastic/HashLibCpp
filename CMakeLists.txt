@@ -76,30 +76,22 @@ function(enable_all_warnings TARGET)
 endfunction()
 
 if(ENABLE_EXAMPLES)
-    add_executable(sha256_abc examples/sha256_abc.cpp)
-    enable_all_warnings(sha256_abc)
-    target_link_libraries(sha256_abc ${LIBRARY_NAME})
+    add_executable(sha224_argv examples/sha224_argv.cpp)
+    enable_all_warnings(sha224_argv)
+    target_link_libraries(sha224_argv ${LIBRARY_NAME})
 
-    add_executable(sha256_cin examples/sha256_cin.cpp)
-    enable_all_warnings(sha256_cin)
-    target_link_libraries(sha256_cin ${LIBRARY_NAME})
+    add_executable(sha256_argv examples/sha256_argv.cpp)
+    enable_all_warnings(sha256_argv)
+    target_link_libraries(sha256_argv ${LIBRARY_NAME})
 
     if(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU") OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
-        add_executable(sha384_abc examples/sha384_abc.cpp)
-        enable_all_warnings(sha384_abc)
-        target_link_libraries(sha384_abc ${LIBRARY_NAME})
+        add_executable(sha384_argv examples/sha384_argv.cpp)
+        enable_all_warnings(sha384_argv)
+        target_link_libraries(sha384_argv ${LIBRARY_NAME})
 
-        add_executable(sha512_abc examples/sha512_abc.cpp)
-        enable_all_warnings(sha512_abc)
-        target_link_libraries(sha512_abc ${LIBRARY_NAME})
-
-        add_executable(sha384_cin examples/sha384_cin.cpp)
-        enable_all_warnings(sha384_cin)
-        target_link_libraries(sha384_cin ${LIBRARY_NAME})
-
-        add_executable(sha512_cin examples/sha512_cin.cpp)
-        enable_all_warnings(sha512_cin)
-        target_link_libraries(sha512_cin ${LIBRARY_NAME})
+        add_executable(sha512_argv examples/sha512_argv.cpp)
+        enable_all_warnings(sha512_argv)
+        target_link_libraries(sha512_argv ${LIBRARY_NAME})
     endif() # STREQUAL "GNU OR Clang"
 else()
     #############################################################
