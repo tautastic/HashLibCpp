@@ -5,7 +5,7 @@ jobs:
     docker:
       # https://circleci.com/developer/images/image/cimg/base
       - image: cimg/base:edge-20.04
-    resource_class: small
+    resource_class: medium
     steps:
       - checkout
       - run:
