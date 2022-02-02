@@ -10,15 +10,16 @@ project(${LIBRARY_NAME})
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
-# Make sure that SHA512 can be compiled
+# Make sure that __uint128_t is available
 if(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU") OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
     add_library(${LIBRARY_NAME} SHARED
             src/sha2.cpp
             src/sha224.cpp
             src/sha256.cpp
+            src/sha384.cpp
             src/sha512.cpp)
 else()
-    message(WARNING "Couldn't compile SHA512.cpp, GNU or Clang needed, you compiled with ${CMAKE_CXX_COMPILER_ID}")
+    message(WARNING "Couldn't compile sha384.cpp and sha512.cpp, GNU or Clang needed, you compiled with ${CMAKE_CXX_COMPILER_ID}")
     add_library(${LIBRARY_NAME} SHARED
             src/sha2.cpp
             src/sha224.cpp
@@ -84,9 +85,17 @@ if(ENABLE_EXAMPLES)
     target_link_libraries(sha256_cin ${LIBRARY_NAME})
 
     if(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU") OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
+        add_executable(sha384_abc examples/sha384_abc.cpp)
+        enable_all_warnings(sha384_abc)
+        target_link_libraries(sha384_abc ${LIBRARY_NAME})
+
         add_executable(sha512_abc examples/sha512_abc.cpp)
         enable_all_warnings(sha512_abc)
         target_link_libraries(sha512_abc ${LIBRARY_NAME})
+
+        add_executable(sha384_cin examples/sha384_cin.cpp)
+        enable_all_warnings(sha384_cin)
+        target_link_libraries(sha384_cin ${LIBRARY_NAME})
 
         add_executable(sha512_cin examples/sha512_cin.cpp)
         enable_all_warnings(sha512_cin)
