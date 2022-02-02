@@ -9,9 +9,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Install deps"
-          command: "sudo apt-get update && sudo apt-get upgrade -y"
-      - run:
           name: "Build"
           command: "cmake -B _build -DCMAKE_BUILD_TYPE=Debug -DENABLE_TESTING=ON . && cmake --build _build"
       - run:
