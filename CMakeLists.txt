@@ -10,15 +10,16 @@ project(${LIBRARY_NAME})
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
-# Make sure that SHA512 can be compiled
+# Make sure that __uint128_t is available
 if(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU") OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
     add_library(${LIBRARY_NAME} SHARED
             src/sha2.cpp
             src/sha224.cpp
             src/sha256.cpp
+            src/sha384.cpp
             src/sha512.cpp)
 else()
-    message(WARNING "Couldn't compile SHA512.cpp, GNU or Clang needed, you compiled with ${CMAKE_CXX_COMPILER_ID}")
+    message(WARNING "Couldn't compile sha384.cpp and sha512.cpp, GNU or Clang needed, you compiled with ${CMAKE_CXX_COMPILER_ID}")
     add_library(${LIBRARY_NAME} SHARED
             src/sha2.cpp
             src/sha224.cpp
@@ -75,22 +76,22 @@ function(enable_all_warnings TARGET)
 endfunction()
 
 if(ENABLE_EXAMPLES)
-    add_executable(sha256_abc examples/sha256_abc.cpp)
-    enable_all_warnings(sha256_abc)
-    target_link_libraries(sha256_abc ${LIBRARY_NAME})
+    add_executable(sha224_argv examples/sha224_argv.cpp)
+    enable_all_warnings(sha224_argv)
+    target_link_libraries(sha224_argv ${LIBRARY_NAME})
 
-    add_executable(sha256_cin examples/sha256_cin.cpp)
-    enable_all_warnings(sha256_cin)
-    target_link_libraries(sha256_cin ${LIBRARY_NAME})
+    add_executable(sha256_argv examples/sha256_argv.cpp)
+    enable_all_warnings(sha256_argv)
+    target_link_libraries(sha256_argv ${LIBRARY_NAME})
 
     if(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU") OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
-        add_executable(sha512_abc examples/sha512_abc.cpp)
-        enable_all_warnings(sha512_abc)
-        target_link_libraries(sha512_abc ${LIBRARY_NAME})
+        add_executable(sha384_argv examples/sha384_argv.cpp)
+        enable_all_warnings(sha384_argv)
+        target_link_libraries(sha384_argv ${LIBRARY_NAME})
 
-        add_executable(sha512_cin examples/sha512_cin.cpp)
-        enable_all_warnings(sha512_cin)
-        target_link_libraries(sha512_cin ${LIBRARY_NAME})
+        add_executable(sha512_argv examples/sha512_argv.cpp)
+        enable_all_warnings(sha512_argv)
+        target_link_libraries(sha512_argv ${LIBRARY_NAME})
     endif() # STREQUAL "GNU OR Clang"
 else()
     #############################################################
@@ -114,6 +115,11 @@ if(ENABLE_TESTING)
     add_executable(test_sha256 tests/test_sha256.cpp)
     target_link_libraries(test_sha256 ${LIBRARY_NAME})
     add_test(NAME sha256 COMMAND test_sha256)
+
+
+    add_executable(test_sha384 tests/test_sha384.cpp)
+    target_link_libraries(test_sha384 ${LIBRARY_NAME})
+    add_test(NAME sha384 COMMAND test_sha384)
 
 
     add_executable(test_sha512 tests/test_sha512.cpp)

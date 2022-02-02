@@ -4,7 +4,7 @@
 int main() {
     std::cout << "\n================SHA512================\nInput: ";
     std::string msg;
-    std::cin >> msg;
+    std::getline(std::cin, msg);
     auto sha512_hash = SHA2::SHA512::hash(msg);
     std::cout << "OUTPUT: " << sha512_hash << "\n================SHA512================\n";
 
