@@ -75,19 +75,22 @@ function(enable_all_warnings TARGET)
 endfunction()
 
 if(ENABLE_EXAMPLES)
-    add_executable(sha224_abc examples/sha224_abc.cpp)
-    enable_all_warnings(sha224_abc)
-    target_link_libraries(sha224_abc ${LIBRARY_NAME})
-
-
     add_executable(sha256_abc examples/sha256_abc.cpp)
     enable_all_warnings(sha256_abc)
     target_link_libraries(sha256_abc ${LIBRARY_NAME})
+
+    add_executable(sha256_cin examples/sha256_cin.cpp)
+    enable_all_warnings(sha256_cin)
+    target_link_libraries(sha256_cin ${LIBRARY_NAME})
 
     if(("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU") OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"))
         add_executable(sha512_abc examples/sha512_abc.cpp)
         enable_all_warnings(sha512_abc)
         target_link_libraries(sha512_abc ${LIBRARY_NAME})
+
+        add_executable(sha512_cin examples/sha512_cin.cpp)
+        enable_all_warnings(sha512_cin)
+        target_link_libraries(sha512_cin ${LIBRARY_NAME})
     endif() # STREQUAL "GNU OR Clang"
 else()
     #############################################################
