@@ -7,9 +7,6 @@ int main(int argc, char* argv[]) {
         msg += (i > 1) ? (" " + std::string(argv[i])) : std::string(argv[i]);
     }
     auto sha512_hash = SHA2::SHA512::hash(msg);
-    std::cout << "\n================SHA512================";
-    std::cout << "\nInput: "  << msg;
-    std::cout << "\nOutput: " << sha512_hash;
-    std::cout << "\n================SHA512================\n\n";
+    std::cout << sha512_hash << "\n";
     return 0;
 }
